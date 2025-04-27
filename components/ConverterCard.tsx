@@ -175,6 +175,8 @@ const ConverterCard = ({ reverse = false }: { reverse?: boolean }) => {
                 className="flex items-center dark:bg-zinc-800 border border-zinc-400/30 dark:border-zinc-700 dark:text-zinc-300 rounded focus:outline-none hover:opacity-80 transition-all duration-50"
               >
                 <button
+                  title='Use url'
+                  type='button'
                   className="tracking-wider p-2 text-left break-all"
                   onClick={() => {
                     setEnteredUrl(url)
@@ -186,6 +188,8 @@ const ConverterCard = ({ reverse = false }: { reverse?: boolean }) => {
                 </button>
 
                 <button
+                  title='Renive url'
+                  type='button'
                   className="p-1 h-full group rounded bg-orange-400 hover:opacity-80 transition-all duration-50"
                   onClick={() => {
                     setHistory(history.filter((_: string, i: number) => i !== index))
