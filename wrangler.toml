@@ -1,10 +1,9 @@
 name = "bit-vpn-converter"
 compatibility_date = "2024-04-26"
-pages_build_output_dir = "out"
-
+pages_build_output_dir = ".vercel/output/static"
 
 [vars]
-build_command = "pnpm run build"
+build_command = "pnpm run build:cf"
 
 # NODE_ENV = "production"
 # 
