@@ -12,7 +12,7 @@ import {
 } from 'react-icons/ri'
 
 import { decryptUrl, encryptUrl } from '../lib/convert'
-import { useLocalStorageObject } from 'react-use-window-localstorage'
+import { useLocalStorage } from 'react-storage-complete'
 
 const prefix = {
   web: 'https://webvpn.bit.edu.cn',
@@ -30,7 +30,7 @@ const ConverterCard = ({ reverse = false }: { reverse?: boolean }) => {
   })
 
   // history only stored for converter (not retrevnoc)
-  const [history, setHistory] = useLocalStorageObject('history', [])
+  const [history, setHistory] = useState<string[]>([]);
 
   // debounced callback so that the converter function doesn't get called on every keystroke
   const encrypt = (url: string, prefix: string) => setConvertedUrl(url === '' ? '' : prefix + encryptUrl(url))
@@ -136,8 +136,9 @@ const ConverterCard = ({ reverse = false }: { reverse?: boolean }) => {
             onClick={() => {
               if (enteredUrl !== '') {
                 setCopied()
-                // remove duplicates
-                setHistory(Array.from(new Set([...history, enteredUrl])))
+                setHistory(prev => 
+                  Array.from(new Set([...prev, enteredUrl]))
+                );
               }
             }}
             className="flex items-center pl-3 pr-2 hover:opacity-80 transition-all duration-50 disabled:opacity-60"
@@ -150,7 +151,9 @@ const ConverterCard = ({ reverse = false }: { reverse?: boolean }) => {
             onClick={() => {
               if (enteredUrl !== '') {
                 window.open(convertedUrl, '_blank')
-                setHistory(Array.from(new Set([...history, enteredUrl])))
+                setHistory(prev => 
+                  Array.from(new Set([...prev, enteredUrl]))
+                );
               }
             }}
             className="flex items-center pl-1 pr-2 hover:opacity-80 transition-all duration-50 disabled:opacity-60"
