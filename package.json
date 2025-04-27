@@ -2,12 +2,13 @@
   "name": "bit-webvpn-converter",
   "version": "0.1.0",
   "private": true,
+  "packageManager": "pnpm@8.7.1",
   "scripts": {
     "dev": "next dev",
     "start": "next start",
     "lint": "next lint",
     "format": "prettier --write --ignore-path .gitignore .",
-    "build": "next build && next-on-pages --experimental-minify",
+    "build": "next build",
     "deploy": "pnpm build && wrangler pages deploy .vercel/output/static --project-name=bit-vpn-converter --branch=main"
   },
   "dependencies": {
