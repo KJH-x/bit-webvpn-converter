@@ -3,7 +3,7 @@ compatibility_date = "2024-04-26"
 pages_build_output_dir = ".vercel/output"
 
 [vars]
-build_command = "pnpm run build:cf"
+build_command = "pnpm run build"
 
 # NODE_ENV = "production"
 # 
